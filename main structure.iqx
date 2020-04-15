@@ -1,0 +1,38 @@
+﻿******* Initialisations ***************
+***************************************
+<defaults>
+/ screencolor = (127,127,127)
+</defaults>
+
+**other script pages
+<include>
+/file = "responses.iqx"
+/file = "instructionpage.iqx"
+/file = "consent.iqx"
+/file = "practice.iqx"
+
+</include>
+
+** initialised values for data collection
+<values>
+/trial_number = 0
+
+/response_time = 0
+/temp = 0
+</values>
+
+******* Main Control Structure ********
+***************************************
+
+**main control
+<expt Main>
+/preinstructions = (start)
+/blocks = [1 = consent; 2 = instructions; 3 = practice]
+/postinstructions = (end)
+</expt>
+
+**data to retain
+<data>
+/columns = [subject, values.response_time]
+/separatefiles = true
+</data>

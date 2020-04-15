@@ -1,0 +1,12 @@
+﻿******* Consent Form ******************
+***************************************
+
+**pointer to consent form. Change the form for your particular experiment
+<htmlpage consent>
+/file = "consent_form.html"
+</htmlpage>
+
+**consent block
+<block consent>
+/ preinstructions = (consent)
+</block>

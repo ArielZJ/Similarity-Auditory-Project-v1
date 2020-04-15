@@ -1,0 +1,95 @@
+﻿******* Start & End *******************
+***************************************
+
+**list how long the experiment will take on the start page
+<page start>
+^Welcome to the experiment!
+^^This will take about 20 minutes
+</page>
+
+<page end>
+^^Thank you for your participation!
+</page>
+
+******* Display Elements **************
+***************************************
+
+**control the start & end display settings
+<instruct>
+/ nextkey = (57)
+/ fontstyle = ("Arial", 10%, true)
+/ screencolor = (127,127,127)
+/ txcolor = yellow
+</instruct>
+
+**instruction on how to quit
+<text quit_notice>
+/ items = ("Press Ctrl + Q to quit the experiment")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txcolor = yellow
+/ txbgcolor = (127,127,127)
+/ position = (80,90)
+</text>
+
+**instruction on how to advance
+<text next_button>
+/ items = ("Press SPACE BUTTON to continue")
+/ position = (80%,85%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+**dissimilarity selection gif
+<video dissimilarity_gif>
+/ items = ("dissimilarity_selection.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+******* Instructions ******************
+***************************************
+
+** Instruction Page 1 **
+<text instruction_page_1>
+/items = ("Throughout the experiment you will hear one sound followed by another sound")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+** Instruction Page 2 **
+<text Instruction_Page_2>
+/ items = ("On this page, please decide the dissimilarity level of the two sounds you heard. 
+
+0 => most similar colour (least dissimilar sounds)
+7 => most dissimilar colour (least similar sounds)
+
+After choosing, move your cursor back to the centre and click the green box to continue")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+**instruction pages control
+<trial instruction_1>
+/stimulusframes = [1 = instruction_page_1,next_button,quit_notice]
+/validresponse = (57)
+/branch = [trial.instruction_2]
+</trial>
+
+<trial instruction_2>
+/stimulusframes = [1 = instruction_page_2,next_button,quit_notice,dissimilarity_gif]
+/validresponse = (57)
+</trial>
+
+**instruction block control
+<block instructions>
+/trials = [1 = instruction_1]
+</block>

@@ -1,0 +1,72 @@
+﻿******* Practice Trials ***************
+***************************************
+
+
+** how many practice trials?
+<values>
+/number_practice_trials = 1
+/practice_trial_index = 1
+</values>
+****** Display Settings***************
+
+**title of page reminder
+<text title>
+/ items = ("Practice Trial")
+/ position = (50%,5%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+*************************************
+
+******* Screen Displays *************
+*************************************
+
+** let the participants know how far they've got to go. Should be in 'responses' page, but had to move due to dependencies :(
+<text process_notice_practice>
+/ items = ("You have finished <%values.practice_trial_index%> of <%values.number_practice_trials%> Questions")
+/ fontstyle = ("Arial", 2.8%, true)
+/ position = (50%,85%)
+/ txbgcolor = (127,127,127)
+</text>
+
+**response screen
+<trial collect_response_data>
+/stimulusframes = [1 = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+					title, similar_reminder, dissimilar_reminder, response_instructions
+]
+/validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/inputdevice = mouse
+/isvalidresponse = [if (trial.collect_response_data.response == "response_blank") false; 
+	else expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.collect_response_data.latency;
+]
+/ branch = [
+	trial.recentre_mouse
+]
+</trial>
+
+**recentre mouse
+<trial recentre_mouse>
+/stimulusframes = [1 = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+					title, similar_reminder, dissimilar_reminder, centersquare,notice_centre_mouse,process_notice_practice
+]
+/ inputdevice = mouse
+/ recorddata = false
+/ validresponse = (centersquare)
+/ ontrialend = [
+	values.practice_trial_index += 1;
+]
+</trial>
+
+
+************ Block Control **********
+*************************************
+
+**practice block control
+<block practice>
+/trials = [1 = collect_response_data]
+</block>
