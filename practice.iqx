@@ -19,6 +19,24 @@
 </text>
 *************************************
 
+******* Play Sounds *****************
+*************************************
+
+<sound test_sound1>
+/items = ("/sounds/mimsy.wav","/sounds/ysmim.wav")
+/ playthrough = TRUE
+</sound>
+
+<sound test_sound2>
+/items = ("/sounds/ysmim.wav","/sounds/mimsy.wav")
+/ playthrough = TRUE
+</sound>
+
+<trial sound_test>
+/stimulustimes = [100 = replace(test_sound1); 1100 = replace(test_sound2)]
+/trialduration = 4000
+</trial>
+
 ******* Screen Displays *************
 *************************************
 
@@ -68,5 +86,5 @@
 
 **practice block control
 <block practice>
-/trials = [1 = collect_response_data]
+/trials = [1 = sound_test; 2 = collect_response_data]
 </block>

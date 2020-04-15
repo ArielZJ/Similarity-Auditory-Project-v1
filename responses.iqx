@@ -224,9 +224,10 @@ values.response = -1; true; values.p_confidence = "0";
 / color = (white)
 </text>
 
+** update the labels to reflect whatever stimuli you're using
 <text response_instructions>
 / items = 
-("Please choose the dissimilarity level of previous 2 circles
+("Please choose the dissimilarity level of previous 2 sounds
 		0 => Most Similar
 		7 => Most Dissimilar")
 / fontstyle = ("Arial", 2.8%, true)
