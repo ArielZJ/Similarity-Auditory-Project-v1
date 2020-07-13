@@ -15,7 +15,7 @@
 
 ** initialised values for data collection
 <values>
-/trial_number = 0
+/trial_number = 100
 
 /response_time = 0
 /temp = 0
